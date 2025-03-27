@@ -22,6 +22,7 @@ import SearchPage from "./pages/SearchPage";
 // import CheckOutPage from "./pages/CheckOutPage";
 
 import { calculateTotals } from "./features/cart/cartSlice";
+import Checkout from './pages/Checkout';
 
 function App() {
   const { quantity, cartShow, cartItems } = useSelector((store) => store.cart);
@@ -54,6 +55,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/checkout" element={<Checkout />}/>
         {/* <Route path="/checkout" element={<CheckOutPage />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
