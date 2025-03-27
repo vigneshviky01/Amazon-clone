@@ -1,0 +1,33 @@
+.banner-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .banner-image {
+    max-height: 600px; /* Default height for larger screens */
+    object-fit: cover;
+  }
+  
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.5); /* Improves text readability */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .banner-image {
+      max-height: 350px; 
+      transform: scale(2); /* Zooms the image */
+      transform-origin: top;
+    }
+  
+    .carousel-caption {
+      font-size: 12px; /* Reduce text size */
+      padding: 5px;
+    }
+  
+    .carousel-control-prev, .carousel-control-next {
+      width: 30px; /* Smaller arrows */
+    }
+  }
+  

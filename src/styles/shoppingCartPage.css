@@ -1,0 +1,14 @@
+.responsive-image {
+    max-width: 200px !important;
+    max-height: 200px !important;
+    object-fit: cover;
+    border-radius: 8px; /* Keeps the rounded corners */
+  }
+  
+  /* For mobile devices (width <= 768px) */
+  @media (max-width: 768px) {
+    .responsive-image {
+      max-width: 300px !important;
+    }
+  }
+  

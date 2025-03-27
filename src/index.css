@@ -1,0 +1,37 @@
+/* Default light mode */
+body[data-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark Mode */
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+
+.form-control:focus, .form-select:valid:focus{
+  box-shadow: none !important;
+  border-color: none !important;
+  background-color: none !important;
+}
+
+*{
+  padding:0px;
+  margin:0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.padding-top-on-section {
+  padding-top: 60px;
+}
+
+@media screen and (max-width: 767px) {  /* Adjusted breakpoint */
+  .padding-top-on-section {
+    padding-top: 130px;
+  }
+}
+
+
