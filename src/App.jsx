@@ -19,7 +19,7 @@ import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import SearchPage from "./pages/SearchPage";
-import CheckOutPage from "./pages/CheckOutPage";
+// import CheckOutPage from "./pages/CheckOutPage";
 
 import { calculateTotals } from "./features/cart/cartSlice";
 
@@ -54,7 +54,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/checkout" element={<CheckOutPage />} />
+        {/* <Route path="/checkout" element={<CheckOutPage />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!hideMiniCart && cartShow && <MiniCart />}
