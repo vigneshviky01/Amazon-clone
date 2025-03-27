@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { showCart } from "../features/cart/cartSlice";
 import ThemeToggleButton from "./ThemeToggleButton";
-const Navbar = () => {
+const Navbar = memo(() => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchString, setSearchString] = useState("");
@@ -127,7 +127,7 @@ const Navbar = () => {
           </div>
         </div>
         <div
-            className="d-flex  justify-content-center align-items-center w-100 d-md-none me-4 py-3 "
+            className="d-flex  justify-content-center align-items-center w-100 d-lg-none me-4 py-3 "
             
           >
              <ThemeToggleButton />
@@ -302,6 +302,6 @@ const Navbar = () => {
       </div>
     </>
   );
-};
+});
 
 export default Navbar;

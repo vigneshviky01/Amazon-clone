@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,memo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext"; // Import Theme Context
 
@@ -11,7 +11,7 @@ import {
 } from "../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProductCard = ({ product }) => {
+const ProductCard = memo(({ product }) => {
   const dispatch = useDispatch();
   const [cartItemQuantity, setCartItemQuantity] = useState(0);
   const { cartItems } = useSelector((store) => store.cart);
@@ -111,6 +111,6 @@ const ProductCard = ({ product }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductCard;

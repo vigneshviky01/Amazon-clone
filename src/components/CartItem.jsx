@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { useDispatch } from "react-redux";
 
 // Bootstrap imports
@@ -7,7 +7,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { removeItem, increase, decrease } from "../features/cart/cartSlice";
 
-const CartItem = ({ id, image, title, price, quantity }) => {
+const CartItem = memo(({ id, image, title, price, quantity }) => {
   const dispatch = useDispatch();
 
   return (
@@ -56,6 +56,6 @@ const CartItem = ({ id, image, title, price, quantity }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CartItem;

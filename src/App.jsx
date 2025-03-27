@@ -22,6 +22,7 @@ import SearchPage from "./pages/SearchPage";
 
 import { calculateTotals } from "./features/cart/cartSlice";
 import Checkout from './pages/Checkout';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   const { quantity, cartShow, cartItems } = useSelector((store) => store.cart);
@@ -65,7 +66,9 @@ function App() {
 export default function AppWrapper() {
   return (
     <Router>
+      <ErrorBoundary>
       <App />
+      </ErrorBoundary>
     </Router>
   );
 }
