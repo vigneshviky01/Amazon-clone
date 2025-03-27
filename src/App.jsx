@@ -19,7 +19,7 @@ import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import SearchPage from "./pages/SearchPage";
-import CheckOutPage from "./pages/CheckOutPage";
+import CheckOutPage from './pages/CheckOutPage';
 
 import { calculateTotals } from "./features/cart/cartSlice";
 
