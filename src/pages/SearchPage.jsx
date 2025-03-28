@@ -8,9 +8,10 @@ const SearchPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState(""); // Sorting state
   const [priceFilters, setPriceFilters] = useState([]); // Multiple price filters state
+  const [categoryFilter, setCategoryFilter] = useState(""); // Category filter state
 
   const query = searchParams.get("q")?.toLowerCase().trim();
-  const category = searchParams.get("category")?.toLowerCase().trim();
+  const initialCategory = searchParams.get("category")?.toLowerCase().trim();
 
   // Function to handle price filter checkbox changes
   const handlePriceFilterChange = (filterValue) => {
@@ -34,10 +35,10 @@ const SearchPage = () => {
       );
     }
 
-    // Filter by category
-    if (category && category !== "all") {
+    // Filter by category dropdown
+    if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
       results = results.filter((product) =>
-        product.category.toLowerCase().includes(category)
+        product.category.toLowerCase() === categoryFilter.toLowerCase()
       );
     }
 
@@ -69,14 +70,27 @@ const SearchPage = () => {
     }
 
     setFilteredProducts(results);
-  }, [query, category, priceFilters, sortOrder]);
+  }, [query, categoryFilter, priceFilters, sortOrder]);
 
   return (
     <div style={{marginTop:"20px"}} className="container  padding-top-on-section">
-      <h2 className="mb-3">Search Results: "{query || category}"</h2>
+      <h2 className="mb-3">Search Results: "{query || categoryFilter}"</h2>
 
       {/* ✅ Filters Section */}
       <div className="filters mb-4">
+        {/* Category Dropdown */}
+        <h5>Filter by Category:</h5>
+        <select
+          className="form-select w-auto mb-3"
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Amazon Fashion">Amazon Fashion</option>
+          <option value="Toys & Games">Toys & Games</option>
+          <option value="Beauty">Beauty</option>
+        </select>
+
         <h5>Filter by Price:</h5>
         <div className="d-flex gap-3">
           <label>

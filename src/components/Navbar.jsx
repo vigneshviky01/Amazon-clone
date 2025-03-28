@@ -1,4 +1,4 @@
-import React, { useState,memo } from "react";
+import React, { useState, memo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -126,58 +126,54 @@ const Navbar = memo(() => {
             </button>
           </div>
         </div>
-        <div
-            className="d-flex  justify-content-center align-items-center w-100 d-lg-none me-4 py-3 "
-            
-          >
-             <ThemeToggleButton />
-            <div className="w-100 input-group input-group-sm ">
-              <div style={{ width: "130px" }}>
-                <select
-                  style={{
-                    borderTopRightRadius: 0,
-                    borderBottomRightRadius: 0,
-                  }}
-                  className="form-select bg-light hover:bg-warning"
-                  value={selectedCategory}
-                  onChange={handleCategoryChange} // Handle selection change
-                >
-                  <option value="All">All</option>
-                  <option value="Amazon Fashion">Amazon Fashion</option>
-                  <option value="Toys & Games">Toys & Games</option>
-                  <option value="Beauty">Beauty</option>
-                </select>
-              </div>
-              <input
-                type="text"
-                className="form-control py-1"
-                placeholder="Search Amazon.com"
-                value={searchString}
-                onChange={(event) => setSearchString(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    navigate(`/search?q=${searchString}`);
-                  }
-                }}
+        {/* mobile view */}
+        <div className="d-flex  justify-content-center align-items-center w-100 d-lg-none mx-4 py-3 ">
+          <div className="w-100 input-group input-group-sm ">
+            <div style={{ width: "130px" }}>
+              <select
                 style={{
-                  borderLeft: "none",
-                  borderRight: "none",
-                  borderTopLeftRadius: 0,
-                  borderBottomLeftRadius: 0,
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0,
                 }}
-              />
-              <span
-                onClick={() => navigate(`/search?q=${searchString}`)}
-                className="input-group-text btn btn-warning border-0 align-middle pt-2 px-3"
+                className="form-select bg-light hover:bg-warning"
+                value={selectedCategory}
+                onChange={handleCategoryChange} // Handle selection change
               >
-                <i className="bi bi-search"></i>
-              </span>
+                <option value="All">All</option>
+                <option value="Amazon Fashion">Amazon Fashion</option>
+                <option value="Toys & Games">Toys & Games</option>
+                <option value="Beauty">Beauty</option>
+              </select>
             </div>
+            <input
+              type="text"
+              className="form-control py-1"
+              placeholder="Search Amazon.com"
+              value={searchString}
+              onChange={(event) => setSearchString(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  navigate(`/search?q=${searchString}`);
+                }
+              }}
+              style={{
+                borderLeft: "none",
+                borderRight: "none",
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0,
+              }}
+            />
+            <span
+              onClick={() => navigate(`/search?q=${searchString}`)}
+              className="input-group-text btn btn-warning border-0 align-middle pt-2 px-3"
+            >
+              <i className="bi bi-search"></i>
+            </span>
           </div>
-          <div className="d-none d-lg-flex">
+        </div>
+        <div className="d-none d-lg-flex">
           <ThemeToggleButton />
-          </div>
-         
+        </div>
       </nav>
 
       {/* Mobile Offcanvas Menu */}
@@ -188,16 +184,27 @@ const Navbar = memo(() => {
         aria-labelledby="mobileNavbarLabel"
       >
         <div className="offcanvas-header bg-dark">
-          <div className="d-flex align-items-center justify-content-end w-100">
+          <div className="d-flex align-items-center justify-content-between w-100">
+            <ThemeToggleButton />
             <Link
               to="/login"
               className="text-white text-decoration-none d-flex align-items-center"
               onClick={() => {
                 const offcanvas = document.getElementById("mobileNavbar");
                 if (offcanvas) {
-                  const bsOffcanvas =
-                    bootstrap.Offcanvas.getInstance(offcanvas);
-                  if (bsOffcanvas) bsOffcanvas.hide();
+                  // Remove show class
+                  offcanvas.classList.remove("show");
+
+                  // Remove all backdrops
+                  const backdrops = document.querySelectorAll(
+                    ".offcanvas-backdrop"
+                  );
+                  backdrops.forEach((backdrop) => backdrop.remove());
+
+                  // Remove body classes that Bootstrap adds
+                  document.body.classList.remove("offcanvas-open");
+                  document.body.style.overflow = "";
+                  document.body.style.paddingRight = "";
                 }
               }}
             >
